@@ -1,1 +1,30 @@
-<p>attestation works!</p>
+<mat-card>NFT Type</mat-card>
+<mat-card>1</mat-card>
+
+<mat-card></mat-card>
+
+<mat-card>NFT Perpetuity</mat-card>
+<mat-card>false</mat-card>
+
+<mat-card></mat-card>
+
+<mat-card>NFT Price</mat-card>
+<mat-card>100</mat-card>
+
+<mat-card></mat-card>
+
+<mat-card>NFT Expiration</mat-card>
+<mat-card>Friday, December 31, 2021 11:00:00 PM(1640991600)</mat-card>
+
+<div *ngIf="(verificationSuccess | async); then verificationSuccessIcon else verificationFailIcon"></div>
+
+<ng-template #verificationSuccessIcon>
+  Verification Result:
+  <mat-icon>check_circle</mat-icon>
+</ng-template>
+
+
+<ng-template #verificationFailIcon>
+  Verification Result:
+  <mat-icon>highlight_off</mat-icon>
+</ng-template>
