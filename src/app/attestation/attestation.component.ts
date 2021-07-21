@@ -17,6 +17,12 @@ export class AttestationComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private store: Store<{attestation: AttestationState}>
   ) {
+    this.verificationSuccess = this.store.select(state => {
+      return state.attestation.verificationSuccess
+    })
+  }
+
+  ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.store.dispatch(verifyChallengeSignatureRequest({
           challenge: params["challenge"],
@@ -26,13 +32,6 @@ export class AttestationComponent implements OnInit {
         })
       )
     });
-
-    this.verificationSuccess = this.store.select(state => {
-      return state.attestation.verificationSuccess
-    })
-  }
-
-  ngOnInit(): void {
   }
 
 }

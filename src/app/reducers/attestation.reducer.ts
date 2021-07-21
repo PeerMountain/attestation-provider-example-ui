@@ -8,13 +8,13 @@ export interface AttestationState {
   verificationSuccess: boolean
 }
 
-export const initialState: AttestationState = {
+export const initialAttestationState: AttestationState = {
   verificationSuccess: false
 };
 
 
 export const attestationReducer = createReducer(
-  initialState,
+  initialAttestationState,
   on(verifyChallengeSignatureRequest, (state, action) => {
     return {
       ...state,

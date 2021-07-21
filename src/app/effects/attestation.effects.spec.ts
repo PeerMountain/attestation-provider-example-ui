@@ -1,18 +1,21 @@
-import { TestBed } from '@angular/core/testing';
-import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable } from 'rxjs';
+import {TestBed} from '@angular/core/testing';
+import {provideMockActions} from '@ngrx/effects/testing';
+import {Observable} from 'rxjs';
 
-import { AttestationEffects } from './attestation.effects';
+import {AttestationEffects} from './attestation.effects';
+import {AttestationService} from "../services/attestation.service";
 
 describe('AttestationEffects', () => {
   let actions$: Observable<any>;
   let effects: AttestationEffects;
+  const attestationServiceMock = {}
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         AttestationEffects,
-        provideMockActions(() => actions$)
+        provideMockActions(() => actions$),
+        {provide: AttestationService, useValue: attestationServiceMock}
       ]
     });
 
