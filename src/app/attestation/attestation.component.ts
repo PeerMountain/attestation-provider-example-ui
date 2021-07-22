@@ -12,6 +12,7 @@ import {Observable} from "rxjs";
 })
 export class AttestationComponent implements OnInit {
   public verificationSuccess: Observable<boolean>
+  public dataForAttestation: string
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,6 +21,7 @@ export class AttestationComponent implements OnInit {
     this.verificationSuccess = this.store.select(state => {
       return state.attestation.verificationSuccess
     })
+    this.dataForAttestation = ""
   }
 
   ngOnInit(): void {
@@ -34,4 +36,7 @@ export class AttestationComponent implements OnInit {
     });
   }
 
+  attestate() {
+
+  }
 }

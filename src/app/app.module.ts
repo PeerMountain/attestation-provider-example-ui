@@ -13,6 +13,9 @@ import {attestationReducer} from "./reducers/attestation.reducer";
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from "@ngrx/effects";
 import {AttestationEffects} from "./effects/attestation.effects";
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import {AttestationEffects} from "./effects/attestation.effects";
     MatIconModule,
     BrowserAnimationsModule,
     StoreDevtoolsModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
     StoreModule.forRoot({attestation: attestationReducer}, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
