@@ -1,11 +1,16 @@
 import {createReducer, on} from '@ngrx/store';
-import {verifyChallengeSignatureRequest, verifyChallengeSignatureResponse} from "../actions/attestation.actions";
+import {
+  redirectRequest,
+  verifyChallengeSignatureRequest,
+  verifyChallengeSignatureResponse
+} from "../actions/attestation.actions";
 
 
 export const attestationFeatureKey = 'attestation';
 
 export interface AttestationState {
-  verificationSuccess: boolean
+  verificationSuccess: boolean,
+  redirectUrl?: string,
 }
 
 export const initialAttestationState: AttestationState = {
@@ -25,6 +30,12 @@ export const attestationReducer = createReducer(
     return {
       ...state,
       verificationSuccess: true
+    }
+  }),
+  on(redirectRequest, (state, action) => {
+    return {
+      ...state,
+      redirectUrl: action.url
     }
   })
 );
