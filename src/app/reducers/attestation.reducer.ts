@@ -1,16 +1,20 @@
 import {createReducer, on} from '@ngrx/store';
 import {
-  redirectRequest,
+  attestationEntityResponse,
   verifyChallengeSignatureRequest,
   verifyChallengeSignatureResponse
 } from "../actions/attestation.actions";
+import {RedirectUrl} from "../model/redirect-url";
+import {OracleRedirectParams} from "../model/oracle-redirect-params";
+import {act} from "@ngrx/effects";
 
 
 export const attestationFeatureKey = 'attestation';
 
 export interface AttestationState {
   verificationSuccess: boolean,
-  redirectUrl?: string,
+  redirectUrl?: RedirectUrl,
+  initialParams?: OracleRedirectParams
 }
 
 export const initialAttestationState: AttestationState = {
@@ -23,6 +27,7 @@ export const attestationReducer = createReducer(
   on(verifyChallengeSignatureRequest, (state, action) => {
     return {
       ...state,
+      initialParams: action,
       verificationSuccess: false,
     }
   }),
@@ -32,10 +37,13 @@ export const attestationReducer = createReducer(
       verificationSuccess: true
     }
   }),
-  on(redirectRequest, (state, action) => {
+  on(attestationEntityResponse, (state, action) => {
     return {
       ...state,
-      redirectUrl: action.url
+      redirectUrl: {
+        url: action.redirectUrl,
+        signature: action.entity.signature
+      }
     }
   })
 );
