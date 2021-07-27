@@ -1,4 +1,6 @@
+import {AttestationEntity} from "./attestation-entity";
+
 export interface RedirectUrl {
   url: string,
-  signature: string,
+  entity: AttestationEntity
 }

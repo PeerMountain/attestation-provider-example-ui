@@ -6,7 +6,6 @@ import {
 } from "../actions/attestation.actions";
 import {RedirectUrl} from "../model/redirect-url";
 import {OracleRedirectParams} from "../model/oracle-redirect-params";
-import {act} from "@ngrx/effects";
 
 
 export const attestationFeatureKey = 'attestation';
@@ -42,7 +41,7 @@ export const attestationReducer = createReducer(
       ...state,
       redirectUrl: {
         url: action.redirectUrl,
-        signature: action.entity.signature
+        entity: action.entity
       }
     }
   })
