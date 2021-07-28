@@ -1,0 +1,17 @@
+<mat-card>Attestation Unique Identifier</mat-card>
+<mat-card>{{attestationId}}</mat-card>
+
+<mat-card>User Id</mat-card>
+<mat-card>{{(attestationData | async)?.userId}}</mat-card>
+<mat-card>Attestation Data</mat-card>
+<mat-card>{{(attestationData | async)?.attestationData}}</mat-card>
+<mat-card>Attestation Time</mat-card>
+<mat-card>{{(attestationData | async)?.attestationTime}}</mat-card>
+<mat-card>Hash Key Array</mat-card>
+<mat-card>{{(attestationData | async)?.hashKeyArray}}</mat-card>
+<mat-card>Hashed Data</mat-card>
+<mat-card>{{(attestationData | async)?.hashedData}}</mat-card>
+<mat-card>Signature</mat-card>
+<mat-card>{{(attestationData | async)?.signature}}</mat-card>
+
+
