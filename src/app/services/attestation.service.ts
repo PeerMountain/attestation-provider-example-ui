@@ -23,4 +23,8 @@ export class AttestationService {
   public postAttestationData(request: DataForAttestationRequest): Observable<AttestationResponse> {
     return this.httpClient.post<AttestationResponse>('/api/attestation/', request)
   }
+
+  public getAttestationData(attestationId: number): Observable<AttestationEntity> {
+    return this.httpClient.get<AttestationEntity>(`/api/attestation/${attestationId}`)
+  }
 }

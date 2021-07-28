@@ -16,11 +16,13 @@ import {AttestationEffects} from "./effects/attestation.effects";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import { TokenUriAccessComponent } from './token-uri-access/token-uri-access.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AttestationComponent
+    AttestationComponent,
+    TokenUriAccessComponent
   ],
   imports: [
     BrowserModule,

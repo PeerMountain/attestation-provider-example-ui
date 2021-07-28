@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {
+  ATTESTATION_DATA_REQUEST,
+  attestationDataResponse,
   attestationEntityResponse,
   SEND_DATA_FOR_ATTESTATION_REQUEST,
   VERIFY_CHALLENGE_SIGNATURE_REQUEST,
@@ -12,6 +14,8 @@ import {AttestationUrlEntity} from "../model/attestation-url-entity";
 import {DataForAttestationRequest} from "../model/data-for-attestation-request";
 import {AttestationResponse} from "../model/attestation-response";
 import {OracleRedirectParams} from "../model/oracle-redirect-params";
+import {AttestationEntity} from "../model/attestation-entity";
+import {AttestationDataRequest} from "../model/attestation-data-request";
 
 @Injectable()
 export class AttestationEffects {
@@ -34,6 +38,15 @@ export class AttestationEffects {
       ofType(SEND_DATA_FOR_ATTESTATION_REQUEST),
       mergeMap((action: DataForAttestationRequest) => this.attestationService.postAttestationData(action)),
       map((res: AttestationResponse) => attestationEntityResponse(res)),
+    )
+  )
+
+
+  sendAttestationDataRequest = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ATTESTATION_DATA_REQUEST),
+      mergeMap((action: AttestationDataRequest) => this.attestationService.getAttestationData(action.id)),
+      map((res: AttestationEntity) => attestationDataResponse(res))
     )
   )
 
