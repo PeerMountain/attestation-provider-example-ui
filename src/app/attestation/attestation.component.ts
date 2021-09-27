@@ -68,6 +68,7 @@ export class AttestationComponent implements OnInit {
       challenge: this.challenge!!,
       signature: this.signature!!,
       token: this.token!!,
+      nftType: this.nftType!!,
     }))
   }
 }

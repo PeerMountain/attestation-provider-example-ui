@@ -3,5 +3,6 @@ export interface DataForAttestationRequest {
   userAddress: string
   challenge: string
   signature: string
-  token: string
+  token: string,
+  nftType: number
 }
