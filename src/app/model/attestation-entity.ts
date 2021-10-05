@@ -5,6 +5,6 @@ export interface AttestationEntity {
   attestationTime: string
   hashKeyArray: string
   hashedData: string
-  signature: string,
-  tokenUri: string,
+  signature: string
+  tokenUri: string
 }
