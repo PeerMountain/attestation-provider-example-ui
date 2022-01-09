@@ -51,12 +51,7 @@ export class AttestationComponent implements OnInit {
       this.store.select(state => state.attestation.initialParams),
     ]).subscribe(tuple => {
       if (!!tuple[0] && !!tuple[1]) {
-        window.location.href = `${tuple[0]?.url}?`
-          .concat(`signature=${tuple[0]?.entity.signature}`)
-          .concat(`&nftType=${tuple[1]?.nftType}`)
-          .concat(`&hashKeyArray=${tuple[0]?.entity.hashKeyArray}`)
-          .concat(`&hashedData=${tuple[0]?.entity.hashedData}`)
-          .concat(`&tokenUri=${tuple[0]?.entity.tokenUri}`)
+        window.location.href = tuple[0]?.entity.tokenUri
       }
     })
   }
